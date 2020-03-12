@@ -35,7 +35,8 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/chat', function (msg) {
-            id = JSON.parse(msg.body).id;
+            if(id == null)
+                id = JSON.parse(msg.body).id;
             showMessage(JSON.parse(msg.body).name, JSON.parse(msg.body).content);
         });
         stompClient.send("/app/connect", {}, new Message(null, $("#name").val(), null).toJson());
