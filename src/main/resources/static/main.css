@@ -1,0 +1,4 @@
+.conversation-container{
+	overflow: scroll;
+	height: 500px;
+}
